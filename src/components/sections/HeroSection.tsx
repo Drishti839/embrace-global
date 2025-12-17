@@ -1,60 +1,57 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Heart, Users, Sparkles } from 'lucide-react';
+import { ArrowRight, Heart } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import heroImage from '@/assets/hero-hands.jpg';
+
 const HeroSection: React.FC = () => {
-  const {
-    t
-  } = useLanguage();
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero pt-20">
+  const { t } = useLanguage();
+  const [rotation, setRotation] = useState(0);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    let animationFrameId: number;
+    
+    const handleScroll = () => {
+      animationFrameId = requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - lastScrollY.current;
+        setRotation(prev => prev + delta * 0.15);
+        lastScrollY.current = currentScrollY;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero pt-20">
+      {/* 3D Heart at Top */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
+        className="absolute top-24 left-1/2 -translate-x-1/2 z-20"
+      >
+        <motion.div
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="w-20 h-20 rounded-2xl gradient-primary flex items-center justify-center shadow-glow"
+        >
+          <Heart className="w-10 h-10 text-primary-foreground" fill="currentColor" />
+        </motion.div>
+      </motion.div>
+
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-primary/10 blur-3xl animate-float" style={{
-        animationDelay: '-2s'
-      }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-radial-glow opacity-50" />
       </div>
-
-      {/* Floating Icons */}
-      <motion.div animate={{
-      y: [-10, 10, -10]
-    }} transition={{
-      duration: 4,
-      repeat: Infinity,
-      ease: 'easeInOut'
-    }} className="absolute top-32 left-[15%] hidden lg:block">
-        <div className="w-16 h-16 rounded-2xl bg-primary/10 backdrop-blur-sm flex items-center justify-center border border-primary/20">
-          <Heart className="w-8 h-8 text-primary" />
-        </div>
-      </motion.div>
-
-      <motion.div animate={{
-      y: [10, -10, 10]
-    }} transition={{
-      duration: 5,
-      repeat: Infinity,
-      ease: 'easeInOut'
-    }} className="absolute top-48 right-[15%] hidden lg:block">
-        <div className="w-14 h-14 rounded-2xl bg-primary/10 backdrop-blur-sm flex items-center justify-center border border-primary/20">
-          <Users className="w-7 h-7 text-primary" />
-        </div>
-      </motion.div>
-
-      <motion.div animate={{
-      y: [-5, 15, -5]
-    }} transition={{
-      duration: 6,
-      repeat: Infinity,
-      ease: 'easeInOut'
-    }} className="absolute bottom-32 left-[20%] hidden lg:block">
-        <div className="w-12 h-12 rounded-2xl bg-primary/10 backdrop-blur-sm flex items-center justify-center border border-primary/20">
-          <Sparkles className="w-6 h-6 text-primary" />
-        </div>
-      </motion.div>
 
       {/* Content */}
       <div className="container-wide relative z-10 px-4 py-20">
@@ -172,7 +169,12 @@ const HeroSection: React.FC = () => {
         }} className="relative">
             <div className="relative z-10">
               <div className="relative rounded-3xl overflow-hidden shadow-elevated">
-                <img src={heroImage} alt="Diverse hands united in a circle, symbolizing community and hope" className="w-full h-auto object-cover" />
+                <img 
+                  src={heroImage} 
+                  alt="Diverse hands united in a circle, symbolizing community and hope" 
+                  className="w-full h-auto object-cover transition-transform duration-100 ease-out"
+                  style={{ transform: `rotate(${rotation}deg)` }}
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
               </div>
 
@@ -243,6 +245,8 @@ const HeroSection: React.FC = () => {
         }} className="w-1.5 h-1.5 rounded-full bg-primary" />
         </motion.div>
       </motion.div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;

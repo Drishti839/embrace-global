@@ -14,7 +14,6 @@ const Footer: React.FC = () => {
     { label: 'Our Mission', href: '/about#mission' },
     { label: 'Impact Stories', href: '/impact' },
     { label: 'Volunteer', href: '/volunteer' },
-    { label: 'Careers', href: '/careers' },
     { label: 'News & Updates', href: '/news' },
   ];
 
@@ -57,8 +56,8 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <p className="text-sm opacity-80 leading-relaxed">
-              Empowering communities and transforming lives through sustainable development, 
-              education, healthcare, and emergency relief programs across the globe.
+              Empowering communities and transforming lives through sustainable development 
+              education healthcare and emergency relief programs across the globe.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
