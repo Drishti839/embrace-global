@@ -18,6 +18,7 @@ const DonatePage: React.FC = () => {
   const [customAmount, setCustomAmount] = useState('');
   const [selectedProgram, setSelectedProgram] = useState(preselectedProgram || 'general');
   const [donationType, setDonationType] = useState<'one-time' | 'monthly'>('one-time');
+  const [selectedPayment, setSelectedPayment] = useState<'upi' | 'card' | 'netbanking'>('upi');
   const amounts = [500, 1000, 2500, 5000, 10000, 25000];
   const programs = [{
     id: 'general',
@@ -224,23 +225,32 @@ const DonatePage: React.FC = () => {
               }} transition={{
                 delay: 0.3
               }} className="glass-card p-6">
-                  <h2 className="text-xl font-semibold text-foreground mb-4">Payment Method</h2>
+                <h2 className="text-xl font-semibold text-foreground mb-4">Payment Method</h2>
                   <div className="grid sm:grid-cols-3 gap-4 mb-6">
-                    <div className="p-4 rounded-xl border-2 border-primary bg-primary/5 text-center">
-                      <Smartphone className="w-8 h-8 text-primary mx-auto mb-2" />
+                    <button 
+                      onClick={() => setSelectedPayment('upi')}
+                      className={`p-4 rounded-xl border-2 text-center transition-all ${selectedPayment === 'upi' ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'}`}
+                    >
+                      <Smartphone className={`w-8 h-8 mx-auto mb-2 ${selectedPayment === 'upi' ? 'text-primary' : 'text-muted-foreground'}`} />
                       <p className="font-medium text-foreground">UPI</p>
                       <p className="text-xs text-muted-foreground">GPay, PhonePe, Paytm</p>
-                    </div>
-                    <div className="p-4 rounded-xl border-2 border-border hover:border-primary/50 text-center cursor-pointer">
-                      <CreditCard className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
+                    </button>
+                    <button 
+                      onClick={() => setSelectedPayment('card')}
+                      className={`p-4 rounded-xl border-2 text-center transition-all ${selectedPayment === 'card' ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'}`}
+                    >
+                      <CreditCard className={`w-8 h-8 mx-auto mb-2 ${selectedPayment === 'card' ? 'text-primary' : 'text-muted-foreground'}`} />
                       <p className="font-medium text-foreground">Card</p>
                       <p className="text-xs text-muted-foreground">Debit / Credit</p>
-                    </div>
-                    <div className="p-4 rounded-xl border-2 border-border hover:border-primary/50 text-center cursor-pointer">
-                      <Building className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
+                    </button>
+                    <button 
+                      onClick={() => setSelectedPayment('netbanking')}
+                      className={`p-4 rounded-xl border-2 text-center transition-all ${selectedPayment === 'netbanking' ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'}`}
+                    >
+                      <Building className={`w-8 h-8 mx-auto mb-2 ${selectedPayment === 'netbanking' ? 'text-primary' : 'text-muted-foreground'}`} />
                       <p className="font-medium text-foreground">Net Banking</p>
                       <p className="text-xs text-muted-foreground">All major banks</p>
-                    </div>
+                    </button>
                   </div>
 
                   <Button className="w-full btn-primary h-14 text-lg" disabled={!finalAmount || finalAmount <= 0}>

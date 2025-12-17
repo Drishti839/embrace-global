@@ -32,22 +32,6 @@ const HeroSection: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero pt-20">
-      {/* 3D Heart at Top */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-        className="absolute top-24 left-1/2 -translate-x-1/2 z-20"
-      >
-        <motion.div
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-20 h-20 rounded-2xl gradient-primary flex items-center justify-center shadow-glow"
-        >
-          <Heart className="w-10 h-10 text-primary-foreground" fill="currentColor" />
-        </motion.div>
-      </motion.div>
-
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-radial-glow opacity-50" />
