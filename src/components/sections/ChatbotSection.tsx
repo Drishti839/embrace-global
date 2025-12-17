@@ -54,8 +54,7 @@ const ChatbotSection: React.FC = () => {
             </motion.div>
 
             <h2 className="text-4xl md:text-5xl font-bold font-serif text-foreground mb-6">
-              Get Instant Answers with Our{' '}
-              
+              Get Instant Help with Our Chatbot
             </h2>
 
             <p className="text-lg text-muted-foreground mb-8">
