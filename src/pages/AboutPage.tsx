@@ -23,8 +23,8 @@ const AboutPage: React.FC = () => {
           <div className="container-wide">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
-                <h1 className="text-4xl md:text-6xl font-bold font-serif text-foreground mb-6">
-                  About <span className="text-gradient">AidConnect Global</span>
+              <h1 className="text-4xl md:text-6xl font-bold font-serif text-foreground mb-6">
+                  About Us
                 </h1>
                 <p className="text-lg text-muted-foreground mb-6">
                   We are a dedicated team of changemakers committed to transforming lives through sustainable 

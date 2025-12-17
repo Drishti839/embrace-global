@@ -16,7 +16,7 @@ const ContactPage: React.FC = () => {
         <div className="container-wide">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-bold font-serif text-foreground mb-4">
-              Contact <span className="text-gradient">Us</span>
+              Contact Us
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Have questions? We'd love to hear from you.
