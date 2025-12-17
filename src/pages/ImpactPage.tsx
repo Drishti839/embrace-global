@@ -66,7 +66,7 @@ const ImpactPage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               className="text-4xl md:text-6xl font-bold font-serif text-foreground mb-6"
             >
-              Our <span className="text-gradient">Impact</span>
+              Our Impact
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

@@ -24,7 +24,7 @@ const CareersPage: React.FC = () => {
               <Briefcase className="w-10 h-10 text-primary-foreground" />
             </div>
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-6xl font-bold font-serif text-foreground mb-4">
-              Join Our <span className="text-gradient">Team</span>
+              Careers
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Build a meaningful career while making a difference in people's lives.

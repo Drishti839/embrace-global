@@ -165,8 +165,7 @@
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background: var(--gradient-primary);
+    @apply text-primary font-bold;
   }
 
   .shadow-glow {

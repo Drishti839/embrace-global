@@ -27,7 +27,7 @@ const ProgramsListPage: React.FC = () => {
         <section className="section-padding gradient-hero">
           <div className="container-wide text-center">
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-6xl font-bold font-serif text-foreground mb-4">
-              Our <span className="text-gradient">Programs</span>
+              Our Programs
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Comprehensive initiatives designed to create lasting, sustainable change in communities.
