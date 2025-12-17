@@ -151,18 +151,18 @@ const HeroSection: React.FC = () => {
           duration: 0.8,
           delay: 0.2
         }} className="relative">
-            <div className="relative z-10">
-              <div className="relative rounded-3xl overflow-hidden shadow-elevated">
+            <div className="relative z-10 flex justify-center">
+              <div className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] rounded-full overflow-hidden shadow-elevated">
                 <img 
                   src={heroImage} 
                   alt="Diverse hands united in a circle, symbolizing community and hope" 
-                  className="w-full h-auto object-cover transition-transform duration-100 ease-out"
+                  className="w-full h-full object-cover transition-transform duration-100 ease-out"
                   style={{ transform: `rotate(${rotation}deg)` }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-full" />
               </div>
 
-              {/* Floating Card */}
+              {/* Floating Card - Circular */}
               <motion.div initial={{
               opacity: 0,
               y: 20
@@ -171,19 +171,13 @@ const HeroSection: React.FC = () => {
               y: 0
             }} transition={{
               delay: 0.8
-            }} className="absolute -bottom-6 -left-6 glass-card p-4 shadow-elevated">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center">
-                    <Heart className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">₹2.5 Cr+</p>
-                    <p className="text-sm text-muted-foreground">Funds Raised</p>
-                  </div>
-                </div>
+            }} className="absolute -bottom-2 -left-2 md:bottom-0 md:left-4 w-24 h-24 md:w-28 md:h-28 rounded-full glass-card shadow-elevated flex flex-col items-center justify-center">
+                <Heart className="w-5 h-5 md:w-6 md:h-6 text-primary mb-1" />
+                <p className="font-semibold text-foreground text-sm md:text-base">₹2.5 Cr+</p>
+                <p className="text-xs text-muted-foreground">Funds Raised</p>
               </motion.div>
 
-              {/* Floating Badge */}
+              {/* Floating Badge - Circular */}
               <motion.div initial={{
               opacity: 0,
               y: -20
@@ -192,17 +186,15 @@ const HeroSection: React.FC = () => {
               y: 0
             }} transition={{
               delay: 0.9
-            }} className="absolute -top-4 -right-4 glass-card px-4 py-2 shadow-elevated">
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">🏆</span>
-                  <span className="font-semibold text-sm text-foreground">Certified NGO</span>
-                </div>
+            }} className="absolute -top-2 -right-2 md:top-0 md:right-4 w-24 h-24 md:w-28 md:h-28 rounded-full glass-card shadow-elevated flex flex-col items-center justify-center">
+                <span className="text-xl md:text-2xl">🏆</span>
+                <span className="font-semibold text-xs md:text-sm text-foreground text-center">Certified NGO</span>
               </motion.div>
             </div>
 
-            {/* Background Decorations */}
-            <div className="absolute -top-8 -right-8 w-full h-full rounded-3xl border-2 border-primary/20 -z-10" />
-            <div className="absolute -bottom-8 -left-8 w-full h-full rounded-3xl bg-primary/5 -z-20" />
+            {/* Background Decorations - Circular */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] md:w-[420px] md:h-[420px] lg:w-[500px] lg:h-[500px] rounded-full border-2 border-primary/20 -z-10" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] h-[360px] md:w-[440px] md:h-[440px] lg:w-[520px] lg:h-[520px] rounded-full bg-primary/5 -z-20" />
           </motion.div>
         </div>
       </div>
