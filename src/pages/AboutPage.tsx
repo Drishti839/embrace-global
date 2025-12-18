@@ -68,8 +68,8 @@ const AboutPage: React.FC = () => {
                 </div>
               </motion.div>
               <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="relative flex justify-center">
-                {/* Circular Image Container */}
-                <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-elevated">
+                {/* Circular Image Container with Glow */}
+                <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-[0_0_40px_rgba(249,115,22,0.4),0_0_80px_rgba(249,115,22,0.2)]">
                   <img 
                     src={heroImage} 
                     alt="Unity - Diverse hands united in a circle" 
