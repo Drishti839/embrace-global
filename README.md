@@ -10,10 +10,6 @@ There are several ways of editing your application.
 
 **Use Lovable**
 
-Simply visit the [(https://embrace-global.lovable.app)](https://embrace-global.lovable.app) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
 **Use your preferred IDE**
 
 If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
