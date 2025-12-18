@@ -2,16 +2,22 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import Navbar from '@/components/layout/Navbar';
-import { Heart, Download, Users, Award, GraduationCap, Stethoscope, Droplets, AlertTriangle } from 'lucide-react';
+import { Heart, Download, Users, Award, GraduationCap, Stethoscope, Droplets, AlertTriangle, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { jsPDF } from 'jspdf';
+import { useMessages } from '@/hooks/useMessages';
+import { Badge } from '@/components/ui/badge';
 
 const DonorDashboard: React.FC = () => {
   const { user, isAuthenticated } = useAuth();
+  const { messages } = useMessages();
 
   if (!isAuthenticated || user?.role !== 'donor') {
     return <Navigate to="/" replace />;
   }
+
+  // Filter messages sent by this donor
+  const myMessages = messages.filter(m => m.senderId === user?.id);
 
   const stats = [
     { icon: Heart, label: 'Total Donated', value: '₹25,000' },
@@ -123,6 +129,19 @@ const DonorDashboard: React.FC = () => {
     doc.save(`AidConnect_Certificate_${donation.id}.pdf`);
   };
 
+  const getStatusBadge = (status: string) => {
+    switch (status) {
+      case 'new':
+        return <Badge variant="secondary">Pending</Badge>;
+      case 'read':
+        return <Badge className="bg-blue-500 text-white">Seen</Badge>;
+      case 'replied':
+        return <Badge className="bg-green-500 text-white">Replied</Badge>;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -147,6 +166,34 @@ const DonorDashboard: React.FC = () => {
               </div>
             ))}
           </div>
+
+          {/* My Messages Section */}
+          {myMessages.length > 0 && (
+            <div className="glass-card p-6 mb-8">
+              <div className="flex items-center gap-3 mb-6">
+                <Mail className="w-6 h-6 text-primary" />
+                <h2 className="text-xl font-semibold">My Messages</h2>
+              </div>
+              <div className="space-y-4">
+                {myMessages.slice().reverse().map((msg) => (
+                  <div key={msg.id} className="border border-border rounded-xl p-4 bg-muted/20">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <h3 className="font-semibold text-foreground">{msg.subject}</h3>
+                          {getStatusBadge(msg.status)}
+                        </div>
+                        <p className="text-foreground">{msg.message}</p>
+                        <p className="text-xs text-muted-foreground mt-2">
+                          Sent: {new Date(msg.createdAt).toLocaleString()}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Donation Impact Details */}
           <div className="glass-card p-6 mb-8">
