@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -7,6 +7,32 @@ import { Heart, Target, Eye, Users, Award, Shield } from 'lucide-react';
 import heroImage from '@/assets/hero-hands.jpg';
 
 const AboutPage: React.FC = () => {
+  const [rotation, setRotation] = useState(0);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const scrollDelta = currentScrollY - lastScrollY.current;
+          
+          // Rotation proportional to scroll distance (0.15 degrees per pixel)
+          setRotation(prev => prev + scrollDelta * 0.15);
+          
+          lastScrollY.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const values = [
     { icon: Heart, title: 'Compassion', description: 'We lead with empathy in everything we do' },
     { icon: Shield, title: 'Transparency', description: '98% fund utilization with full accountability' },
@@ -41,8 +67,21 @@ const AboutPage: React.FC = () => {
                   </div>
                 </div>
               </motion.div>
-              <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}>
-                <img src={heroImage} alt="Unity" className="rounded-3xl shadow-elevated" />
+              <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="relative flex justify-center">
+                {/* Circular Image Container */}
+                <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-elevated">
+                  <img 
+                    src={heroImage} 
+                    alt="Unity - Diverse hands united in a circle" 
+                    className="w-full h-full object-cover transition-transform duration-100 ease-out"
+                    style={{ transform: `rotate(${rotation}deg)` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-full" />
+                </div>
+                
+                {/* Background Decorations - Circular */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[310px] h-[310px] md:w-[340px] md:h-[340px] lg:w-[420px] lg:h-[420px] rounded-full border-2 border-primary/20 -z-10" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[330px] h-[330px] md:w-[360px] md:h-[360px] lg:w-[440px] lg:h-[440px] rounded-full bg-primary/5 -z-20" />
               </motion.div>
             </div>
           </div>
