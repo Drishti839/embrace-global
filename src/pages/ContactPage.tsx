@@ -1,14 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ChatbotWidget from '@/components/chatbot/ChatbotWidget';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useMessages } from '@/hooks/useMessages';
+import { useAuth } from '@/contexts/AuthContext';
+import { useToast } from '@/hooks/use-toast';
 
 const ContactPage: React.FC = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const { saveMessage } = useMessages();
+  const { user } = useAuth();
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
+      toast({
+        title: "Missing fields",
+        description: "Please fill in all fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    saveMessage({
+      name: name.trim(),
+      email: email.trim(),
+      subject: subject.trim(),
+      message: message.trim(),
+      senderRole: user?.role === 'donor' ? 'donor' : 'visitor',
+      senderId: user?.id,
+    });
+
+    toast({
+      title: "Message sent!",
+      description: "We'll get back to you soon.",
+    });
+
+    setName('');
+    setEmail('');
+    setSubject('');
+    setMessage('');
+    setIsSubmitting(false);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -25,14 +76,53 @@ const ContactPage: React.FC = () => {
 
           <div className="grid lg:grid-cols-2 gap-12">
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="glass-card p-8">
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <div><label className="text-sm font-medium text-foreground mb-2 block">Name</label><Input placeholder="Your name" className="rounded-xl" /></div>
-                  <div><label className="text-sm font-medium text-foreground mb-2 block">Email</label><Input type="email" placeholder="Your email" className="rounded-xl" /></div>
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">Name</label>
+                    <Input 
+                      placeholder="Your name" 
+                      className="rounded-xl" 
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">Email</label>
+                    <Input 
+                      type="email" 
+                      placeholder="Your email" 
+                      className="rounded-xl"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
                 </div>
-                <div><label className="text-sm font-medium text-foreground mb-2 block">Subject</label><Input placeholder="How can we help?" className="rounded-xl" /></div>
-                <div><label className="text-sm font-medium text-foreground mb-2 block">Message</label><Textarea placeholder="Your message..." className="rounded-xl min-h-[120px]" /></div>
-                <Button className="w-full btn-primary h-12"><Send className="w-4 h-4 mr-2" /> Send Message</Button>
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-2 block">Subject</label>
+                  <Input 
+                    placeholder="How can we help?" 
+                    className="rounded-xl"
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-2 block">Message</label>
+                  <Textarea 
+                    placeholder="Your message..." 
+                    className="rounded-xl min-h-[120px]"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                  />
+                </div>
+                <Button type="submit" className="w-full btn-primary h-12" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Sending...</>
+                  ) : (
+                    <><Send className="w-4 h-4 mr-2" /> Send Message</>
+                  )}
+                </Button>
               </form>
             </motion.div>
 
