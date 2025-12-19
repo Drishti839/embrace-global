@@ -261,10 +261,10 @@ const ChatbotWidget: React.FC = () => {
               opacity: 1, 
               y: 0, 
               scale: 1,
-              height: isMinimized ? 'auto' : '600px'
+              height: isMinimized ? 'auto' : '420px'
             }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-6 right-6 z-50 w-[400px] max-w-[calc(100vw-48px)] glass-card overflow-hidden shadow-elevated flex flex-col"
+            className="fixed bottom-6 right-6 z-50 w-[360px] max-w-[calc(100vw-48px)] glass-card overflow-hidden shadow-elevated flex flex-col"
           >
             {/* Header */}
             <div className="gradient-primary p-4 flex items-center justify-between">

@@ -119,19 +119,19 @@ const StaffDashboard: React.FC = () => {
     : recentTransactions;
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-background gradient-hero">
       <Navbar />
       <main className="pt-24 pb-12 px-4 md:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/20">
-                <Briefcase className="w-7 h-7 text-white" />
+              <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center shadow-lg">
+                <Briefcase className="w-7 h-7 text-primary-foreground" />
               </div>
               <div>
-                <h1 className="text-2xl md:text-3xl font-bold text-white">Admin Dashboard</h1>
-                <p className="text-slate-400">Welcome back, {user?.name}</p>
+                <h1 className="text-2xl md:text-3xl font-bold text-foreground">Admin Dashboard</h1>
+                <p className="text-muted-foreground">Welcome back, {user?.name}</p>
               </div>
             </div>
           </div>
@@ -139,7 +139,7 @@ const StaffDashboard: React.FC = () => {
           {/* Compliance Score Card */}
           <div 
             onClick={() => setShowComplianceDialog(true)}
-            className="mb-8 p-6 rounded-2xl bg-slate-900/50 border border-slate-800/50 hover:border-orange-500/30 transition-all cursor-pointer group"
+            className="mb-8 p-6 rounded-2xl glass-card hover:border-primary/30 transition-all cursor-pointer group"
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
@@ -147,12 +147,12 @@ const StaffDashboard: React.FC = () => {
                   <Shield className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <p className="text-slate-400 text-sm">Compliance Score</p>
-                  <p className="text-4xl font-bold text-white">{complianceScore}%</p>
-                  <p className="text-emerald-400 text-sm">System Health: Excellent</p>
+                  <p className="text-muted-foreground text-sm">Compliance Score</p>
+                  <p className="text-4xl font-bold text-foreground">{complianceScore}%</p>
+                  <p className="text-emerald-600 text-sm">System Health: Excellent</p>
                 </div>
               </div>
-              <ChevronRight className="w-6 h-6 text-slate-500 group-hover:text-orange-400 transition-colors" />
+              <ChevronRight className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
             </div>
           </div>
 
@@ -164,36 +164,36 @@ const StaffDashboard: React.FC = () => {
               { icon: FileText, label: 'Aid Requests', value: '45 Pending', color: 'from-amber-500 to-amber-600' },
               { icon: Mail, label: 'Messages', value: messages.length.toString(), color: 'from-rose-500 to-rose-600' },
             ].map((stat, index) => (
-              <div key={index} className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800/50 hover:border-slate-700 transition-all">
+              <div key={index} className="p-4 rounded-2xl glass-card hover-lift transition-all">
                 <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-3 shadow-lg`}>
                   <stat.icon className="w-5 h-5 text-white" />
                 </div>
-                <p className="text-2xl font-bold text-white">{stat.value}</p>
-                <p className="text-slate-400 text-sm">{stat.label}</p>
+                <p className="text-2xl font-bold text-foreground">{stat.value}</p>
+                <p className="text-muted-foreground text-sm">{stat.label}</p>
               </div>
             ))}
           </div>
 
           {/* Main Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="w-full bg-slate-900/50 border border-slate-800/50 p-1 rounded-xl">
+            <TabsList className="w-full bg-card border border-border p-1 rounded-xl">
               <TabsTrigger 
                 value="fund-management" 
-                className="flex-1 data-[state=active]:bg-orange-500 data-[state=active]:text-white rounded-lg transition-all"
+                className="flex-1 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-lg transition-all"
               >
                 <Wallet className="w-4 h-4 mr-2" />
                 Fund Management
               </TabsTrigger>
               <TabsTrigger 
                 value="program-allocation"
-                className="flex-1 data-[state=active]:bg-orange-500 data-[state=active]:text-white rounded-lg transition-all"
+                className="flex-1 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-lg transition-all"
               >
                 <PieChart className="w-4 h-4 mr-2" />
                 Program Allocation
               </TabsTrigger>
               <TabsTrigger 
                 value="aid-requests"
-                className="flex-1 data-[state=active]:bg-orange-500 data-[state=active]:text-white rounded-lg transition-all"
+                className="flex-1 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-lg transition-all"
               >
                 <FileText className="w-4 h-4 mr-2" />
                 Aid Requests
@@ -203,24 +203,24 @@ const StaffDashboard: React.FC = () => {
             {/* Fund Management Tab */}
             <TabsContent value="fund-management" className="space-y-6">
               {/* Fund Utilization */}
-              <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800/50">
+              <div className="p-6 rounded-2xl glass-card">
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-xl font-semibold text-white">Fund Utilization</h2>
-                  <span className="text-emerald-400 font-semibold">98%</span>
+                  <h2 className="text-xl font-semibold text-foreground">Fund Utilization</h2>
+                  <span className="text-emerald-600 font-semibold">98%</span>
                 </div>
-                <Progress value={98} className="h-3 bg-slate-800" />
-                <p className="text-slate-400 text-sm mt-2">₹24.5 Lakh utilized out of ₹25 Lakh</p>
+                <Progress value={98} className="h-3 bg-muted" />
+                <p className="text-muted-foreground text-sm mt-2">₹24.5 Lakh utilized out of ₹25 Lakh</p>
               </div>
 
               {/* Transactions Table */}
-              <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800/50">
+              <div className="p-6 rounded-2xl glass-card">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-white">Recent Transactions</h2>
+                  <h2 className="text-xl font-semibold text-foreground">Recent Transactions</h2>
                   <Button 
                     variant="outline" 
                     size="sm" 
                     onClick={exportToCSV}
-                    className="border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white"
+                    className="border-border text-muted-foreground hover:bg-muted hover:text-foreground"
                   >
                     <Download className="w-4 h-4 mr-2" />
                     Export CSV
@@ -229,28 +229,28 @@ const StaffDashboard: React.FC = () => {
                 <div className="overflow-x-auto">
                   <Table>
                     <TableHeader>
-                      <TableRow className="border-slate-800 hover:bg-transparent">
-                        <TableHead className="text-slate-400">Donor</TableHead>
-                        <TableHead className="text-slate-400">Amount</TableHead>
-                        <TableHead className="text-slate-400">Category</TableHead>
-                        <TableHead className="text-slate-400">Date</TableHead>
-                        <TableHead className="text-slate-400">Status</TableHead>
+                      <TableRow className="border-border hover:bg-transparent">
+                        <TableHead className="text-muted-foreground">Donor</TableHead>
+                        <TableHead className="text-muted-foreground">Amount</TableHead>
+                        <TableHead className="text-muted-foreground">Category</TableHead>
+                        <TableHead className="text-muted-foreground">Date</TableHead>
+                        <TableHead className="text-muted-foreground">Status</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {filteredTransactions.map((txn) => (
                         <TableRow 
                           key={txn.id} 
-                          className="border-slate-800 hover:bg-slate-800/50 cursor-pointer transition-colors"
+                          className="border-border hover:bg-muted/50 cursor-pointer transition-colors"
                           onClick={() => {
                             setSelectedTransaction(txn);
                             setShowTransactionDialog(true);
                           }}
                         >
-                          <TableCell className="text-white font-medium">{txn.donor}</TableCell>
-                          <TableCell className="text-emerald-400">₹{txn.amount.toLocaleString()}</TableCell>
-                          <TableCell className="text-slate-300">{txn.category}</TableCell>
-                          <TableCell className="text-slate-400">{txn.date}</TableCell>
+                          <TableCell className="text-foreground font-medium">{txn.donor}</TableCell>
+                          <TableCell className="text-emerald-600">₹{txn.amount.toLocaleString()}</TableCell>
+                          <TableCell className="text-muted-foreground">{txn.category}</TableCell>
+                          <TableCell className="text-muted-foreground">{txn.date}</TableCell>
                           <TableCell>{getStatusBadge(txn.status)}</TableCell>
                         </TableRow>
                       ))}
@@ -260,29 +260,29 @@ const StaffDashboard: React.FC = () => {
               </div>
 
               {/* Messages Section */}
-              <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800/50">
+              <div className="p-6 rounded-2xl glass-card">
                 <div className="flex items-center gap-3 mb-6">
-                  <Mail className="w-5 h-5 text-orange-400" />
-                  <h2 className="text-xl font-semibold text-white">Contact Messages</h2>
+                  <Mail className="w-5 h-5 text-primary" />
+                  <h2 className="text-xl font-semibold text-foreground">Contact Messages</h2>
                 </div>
                 
                 {messages.length === 0 ? (
-                  <p className="text-slate-400 text-center py-8">No messages yet</p>
+                  <p className="text-muted-foreground text-center py-8">No messages yet</p>
                 ) : (
                   <div className="space-y-4">
                     {messages.slice().reverse().map((msg) => (
-                      <div key={msg.id} className="p-4 rounded-xl bg-slate-800/30 border border-slate-700/50 hover:border-slate-600 transition-all">
+                      <div key={msg.id} className="p-4 rounded-xl bg-muted/30 border border-border hover:border-primary/30 transition-all">
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-2">
-                              <h3 className="font-semibold text-white">{msg.subject}</h3>
+                              <h3 className="font-semibold text-foreground">{msg.subject}</h3>
                               {getMessageStatusBadge(msg.status)}
                             </div>
-                            <p className="text-sm text-slate-400 mb-2">
+                            <p className="text-sm text-muted-foreground mb-2">
                               From: {msg.name} ({msg.email})
                             </p>
-                            <p className="text-slate-300">{msg.message}</p>
-                            <p className="text-xs text-slate-500 mt-2">
+                            <p className="text-foreground">{msg.message}</p>
+                            <p className="text-xs text-muted-foreground mt-2">
                               {new Date(msg.createdAt).toLocaleString()}
                             </p>
                           </div>
@@ -292,7 +292,7 @@ const StaffDashboard: React.FC = () => {
                                 size="sm" 
                                 variant="outline"
                                 onClick={() => updateMessageStatus(msg.id, 'read')}
-                                className="border-slate-700 text-slate-300 hover:bg-slate-800"
+                                className="border-border text-muted-foreground hover:bg-muted"
                               >
                                 <CheckCircle className="w-4 h-4 mr-1" />
                                 Mark Read
@@ -303,7 +303,7 @@ const StaffDashboard: React.FC = () => {
                                 size="sm" 
                                 variant="outline"
                                 onClick={() => updateMessageStatus(msg.id, 'replied')}
-                                className="border-slate-700 text-slate-300 hover:bg-slate-800"
+                                className="border-border text-muted-foreground hover:bg-muted"
                               >
                                 <Clock className="w-4 h-4 mr-1" />
                                 Mark Replied
@@ -320,10 +320,10 @@ const StaffDashboard: React.FC = () => {
 
             {/* Program Allocation Tab */}
             <TabsContent value="program-allocation" className="space-y-6">
-              <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800/50">
+              <div className="p-6 rounded-2xl glass-card">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-white">Fund Distribution by Program</h2>
-                  <p className="text-slate-400">Total: ₹{(totalFunds / 100000).toFixed(1)} Lakh</p>
+                  <h2 className="text-xl font-semibold text-foreground">Fund Distribution by Program</h2>
+                  <p className="text-muted-foreground">Total: ₹{(totalFunds / 100000).toFixed(1)} Lakh</p>
                 </div>
                 <div className="space-y-4">
                   {programAllocations.map((program) => (
@@ -333,7 +333,7 @@ const StaffDashboard: React.FC = () => {
                         setSelectedProgram(program.name);
                         setActiveTab('fund-management');
                       }}
-                      className="p-4 rounded-xl bg-slate-800/30 border border-slate-700/50 hover:border-orange-500/30 transition-all cursor-pointer group"
+                      className="p-4 rounded-xl bg-muted/30 border border-border hover:border-primary/30 transition-all cursor-pointer group"
                     >
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-3">
@@ -341,24 +341,24 @@ const StaffDashboard: React.FC = () => {
                             <program.icon className="w-5 h-5 text-white" />
                           </div>
                           <div>
-                            <p className="font-semibold text-white">{program.name}</p>
-                            <p className="text-sm text-slate-400">₹{(program.amount / 100000).toFixed(1)} Lakh</p>
+                            <p className="font-semibold text-foreground">{program.name}</p>
+                            <p className="text-sm text-muted-foreground">₹{(program.amount / 100000).toFixed(1)} Lakh</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-3">
-                          <span className="text-lg font-bold text-white">{program.percentage}%</span>
-                          <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-orange-400 transition-colors" />
+                          <span className="text-lg font-bold text-foreground">{program.percentage}%</span>
+                          <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                         </div>
                       </div>
-                      <Progress value={program.percentage} className="h-2 bg-slate-700" />
+                      <Progress value={program.percentage} className="h-2 bg-muted" />
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Visual Distribution */}
-              <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800/50">
-                <h2 className="text-xl font-semibold text-white mb-6">Allocation Overview</h2>
+              <div className="p-6 rounded-2xl glass-card">
+                <h2 className="text-xl font-semibold text-foreground mb-6">Allocation Overview</h2>
                 <div className="flex items-center gap-2 h-8 rounded-lg overflow-hidden">
                   {programAllocations.map((program) => (
                     <div 
@@ -373,7 +373,7 @@ const StaffDashboard: React.FC = () => {
                   {programAllocations.map((program) => (
                     <div key={program.id} className="flex items-center gap-2">
                       <div className={`w-3 h-3 rounded-full ${program.color}`} />
-                      <span className="text-sm text-slate-400">{program.name}</span>
+                      <span className="text-sm text-muted-foreground">{program.name}</span>
                     </div>
                   ))}
                 </div>
@@ -385,10 +385,10 @@ const StaffDashboard: React.FC = () => {
               {aidRequests.map((request) => (
                 <div 
                   key={request.id}
-                  className={`p-5 rounded-2xl bg-slate-900/50 border transition-all cursor-pointer ${
+                  className={`p-5 rounded-2xl glass-card transition-all cursor-pointer ${
                     request.status === 'Pending' 
                       ? 'border-amber-500/30 hover:border-amber-500/50' 
-                      : 'border-slate-800/50 hover:border-slate-700'
+                      : 'hover:border-primary/30'
                   }`}
                   onClick={() => {
                     setSelectedAid(request);
@@ -398,20 +398,20 @@ const StaffDashboard: React.FC = () => {
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="font-semibold text-white">{request.name}</h3>
+                        <h3 className="font-semibold text-foreground">{request.name}</h3>
                         {getStatusBadge(request.status)}
                       </div>
-                      <div className="flex flex-wrap gap-4 text-sm text-slate-400">
+                      <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                         <span>ID: {request.id}</span>
                         <span>Category: {request.category}</span>
                         <span>Date: {request.date}</span>
                       </div>
-                      <p className="text-slate-500 text-sm mt-1">Beneficiary: {request.beneficiary}</p>
+                      <p className="text-muted-foreground text-sm mt-1">Beneficiary: {request.beneficiary}</p>
                     </div>
                     <div className="flex items-center gap-4">
                       <div className="text-right">
-                        <p className="text-2xl font-bold text-white">₹{request.amount.toLocaleString()}</p>
-                        <p className="text-sm text-slate-400">Requested Amount</p>
+                        <p className="text-2xl font-bold text-foreground">₹{request.amount.toLocaleString()}</p>
+                        <p className="text-sm text-muted-foreground">Requested Amount</p>
                       </div>
                       {request.status === 'Pending' && (
                         <div className="flex gap-2">
@@ -429,7 +429,7 @@ const StaffDashboard: React.FC = () => {
                           <Button 
                             size="sm" 
                             variant="outline"
-                            className="border-rose-500/50 text-rose-400 hover:bg-rose-500/20"
+                            className="border-rose-500/50 text-rose-500 hover:bg-rose-500/20"
                             onClick={(e) => {
                               e.stopPropagation();
                               // Handle reject
@@ -451,44 +451,44 @@ const StaffDashboard: React.FC = () => {
 
       {/* Compliance Dialog */}
       <Dialog open={showComplianceDialog} onOpenChange={setShowComplianceDialog}>
-        <DialogContent className="bg-slate-900 border-slate-800 text-white max-w-md">
+        <DialogContent className="bg-card border-border text-foreground max-w-md">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-3">
-              <Shield className="w-6 h-6 text-emerald-400" />
+              <Shield className="w-6 h-6 text-emerald-600" />
               Compliance Breakdown
             </DialogTitle>
-            <DialogDescription className="text-slate-400">
+            <DialogDescription className="text-muted-foreground">
               Detailed compliance metrics and system health
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 pt-4">
-            <div className="p-4 rounded-xl bg-slate-800/50">
+            <div className="p-4 rounded-xl bg-muted/50">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-slate-300">Aid Requests Processed</span>
-                <span className="text-emerald-400 font-semibold">47/50</span>
+                <span className="text-muted-foreground">Aid Requests Processed</span>
+                <span className="text-emerald-600 font-semibold">47/50</span>
               </div>
-              <Progress value={94} className="h-2 bg-slate-700" />
+              <Progress value={94} className="h-2 bg-muted" />
             </div>
-            <div className="p-4 rounded-xl bg-slate-800/50">
+            <div className="p-4 rounded-xl bg-muted/50">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-slate-300">Transactions Completed</span>
-                <span className="text-emerald-400 font-semibold">98/100</span>
+                <span className="text-muted-foreground">Transactions Completed</span>
+                <span className="text-emerald-600 font-semibold">98/100</span>
               </div>
-              <Progress value={98} className="h-2 bg-slate-700" />
+              <Progress value={98} className="h-2 bg-muted" />
             </div>
-            <div className="p-4 rounded-xl bg-slate-800/50">
+            <div className="p-4 rounded-xl bg-muted/50">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-slate-300">Documentation Complete</span>
-                <span className="text-emerald-400 font-semibold">92%</span>
+                <span className="text-muted-foreground">Documentation Complete</span>
+                <span className="text-emerald-600 font-semibold">92%</span>
               </div>
-              <Progress value={92} className="h-2 bg-slate-700" />
+              <Progress value={92} className="h-2 bg-muted" />
             </div>
-            <div className="p-4 rounded-xl bg-slate-800/50">
+            <div className="p-4 rounded-xl bg-muted/50">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-slate-300">Audit Compliance</span>
-                <span className="text-emerald-400 font-semibold">95%</span>
+                <span className="text-muted-foreground">Audit Compliance</span>
+                <span className="text-emerald-600 font-semibold">95%</span>
               </div>
-              <Progress value={95} className="h-2 bg-slate-700" />
+              <Progress value={95} className="h-2 bg-muted" />
             </div>
           </div>
         </DialogContent>
@@ -496,46 +496,46 @@ const StaffDashboard: React.FC = () => {
 
       {/* Transaction Detail Dialog */}
       <Dialog open={showTransactionDialog} onOpenChange={setShowTransactionDialog}>
-        <DialogContent className="bg-slate-900 border-slate-800 text-white max-w-md">
+        <DialogContent className="bg-card border-border text-foreground max-w-md">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-3">
-              <IndianRupee className="w-6 h-6 text-orange-400" />
+              <IndianRupee className="w-6 h-6 text-primary" />
               Transaction Details
             </DialogTitle>
           </DialogHeader>
           {selectedTransaction && (
             <div className="space-y-4 pt-4">
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-3 rounded-xl bg-slate-800/50">
-                  <p className="text-slate-400 text-sm">Transaction ID</p>
-                  <p className="text-white font-semibold">{selectedTransaction.id}</p>
+                <div className="p-3 rounded-xl bg-muted/50">
+                  <p className="text-muted-foreground text-sm">Transaction ID</p>
+                  <p className="text-foreground font-semibold">{selectedTransaction.id}</p>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-800/50">
-                  <p className="text-slate-400 text-sm">Status</p>
+                <div className="p-3 rounded-xl bg-muted/50">
+                  <p className="text-muted-foreground text-sm">Status</p>
                   <div className="mt-1">{getStatusBadge(selectedTransaction.status)}</div>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-800/50">
-                  <p className="text-slate-400 text-sm">Donor</p>
-                  <p className="text-white font-semibold">{selectedTransaction.donor}</p>
+                <div className="p-3 rounded-xl bg-muted/50">
+                  <p className="text-muted-foreground text-sm">Donor</p>
+                  <p className="text-foreground font-semibold">{selectedTransaction.donor}</p>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-800/50">
-                  <p className="text-slate-400 text-sm">Amount</p>
-                  <p className="text-emerald-400 font-semibold">₹{selectedTransaction.amount.toLocaleString()}</p>
+                <div className="p-3 rounded-xl bg-muted/50">
+                  <p className="text-muted-foreground text-sm">Amount</p>
+                  <p className="text-emerald-600 font-semibold">₹{selectedTransaction.amount.toLocaleString()}</p>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-800/50">
-                  <p className="text-slate-400 text-sm">Category</p>
-                  <p className="text-white font-semibold">{selectedTransaction.category}</p>
+                <div className="p-3 rounded-xl bg-muted/50">
+                  <p className="text-muted-foreground text-sm">Category</p>
+                  <p className="text-foreground font-semibold">{selectedTransaction.category}</p>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-800/50">
-                  <p className="text-slate-400 text-sm">Payment Method</p>
-                  <p className="text-white font-semibold">{selectedTransaction.method}</p>
+                <div className="p-3 rounded-xl bg-muted/50">
+                  <p className="text-muted-foreground text-sm">Payment Method</p>
+                  <p className="text-foreground font-semibold">{selectedTransaction.method}</p>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-800/50 col-span-2">
-                  <p className="text-slate-400 text-sm">Date</p>
-                  <p className="text-white font-semibold">{selectedTransaction.date}</p>
+                <div className="p-3 rounded-xl bg-muted/50 col-span-2">
+                  <p className="text-muted-foreground text-sm">Date</p>
+                  <p className="text-foreground font-semibold">{selectedTransaction.date}</p>
                 </div>
               </div>
-              <Button className="w-full bg-orange-500 hover:bg-orange-600">
+              <Button className="w-full btn-primary">
                 <Download className="w-4 h-4 mr-2" />
                 Download Receipt
               </Button>
@@ -546,50 +546,50 @@ const StaffDashboard: React.FC = () => {
 
       {/* Aid Request Detail Dialog */}
       <Dialog open={showAidDialog} onOpenChange={setShowAidDialog}>
-        <DialogContent className="bg-slate-900 border-slate-800 text-white max-w-lg">
+        <DialogContent className="bg-card border-border text-foreground max-w-lg">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-3">
-              <FileText className="w-6 h-6 text-orange-400" />
+              <FileText className="w-6 h-6 text-primary" />
               Aid Request Details
             </DialogTitle>
           </DialogHeader>
           {selectedAid && (
             <div className="space-y-4 pt-4">
-              <div className="p-4 rounded-xl bg-slate-800/50">
-                <h3 className="text-white font-semibold text-lg mb-2">{selectedAid.name}</h3>
+              <div className="p-4 rounded-xl bg-muted/50">
+                <h3 className="text-foreground font-semibold text-lg mb-2">{selectedAid.name}</h3>
                 <div className="flex items-center gap-2">
                   {getStatusBadge(selectedAid.status)}
-                  <span className="text-slate-400 text-sm">ID: {selectedAid.id}</span>
+                  <span className="text-muted-foreground text-sm">ID: {selectedAid.id}</span>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-3 rounded-xl bg-slate-800/50">
-                  <p className="text-slate-400 text-sm">Category</p>
-                  <p className="text-white font-semibold">{selectedAid.category}</p>
+                <div className="p-3 rounded-xl bg-muted/50">
+                  <p className="text-muted-foreground text-sm">Category</p>
+                  <p className="text-foreground font-semibold">{selectedAid.category}</p>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-800/50">
-                  <p className="text-slate-400 text-sm">Request Date</p>
-                  <p className="text-white font-semibold">{selectedAid.date}</p>
+                <div className="p-3 rounded-xl bg-muted/50">
+                  <p className="text-muted-foreground text-sm">Request Date</p>
+                  <p className="text-foreground font-semibold">{selectedAid.date}</p>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-800/50">
-                  <p className="text-slate-400 text-sm">Beneficiary</p>
-                  <p className="text-white font-semibold">{selectedAid.beneficiary}</p>
+                <div className="p-3 rounded-xl bg-muted/50">
+                  <p className="text-muted-foreground text-sm">Beneficiary</p>
+                  <p className="text-foreground font-semibold">{selectedAid.beneficiary}</p>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-800/50">
-                  <p className="text-slate-400 text-sm">Requested Amount</p>
-                  <p className="text-emerald-400 font-semibold">₹{selectedAid.amount.toLocaleString()}</p>
+                <div className="p-3 rounded-xl bg-muted/50">
+                  <p className="text-muted-foreground text-sm">Requested Amount</p>
+                  <p className="text-emerald-600 font-semibold">₹{selectedAid.amount.toLocaleString()}</p>
                 </div>
               </div>
-              <div className="p-4 rounded-xl bg-slate-800/50">
-                <p className="text-slate-400 text-sm mb-2">Linked Funding Sources</p>
+              <div className="p-4 rounded-xl bg-muted/50">
+                <p className="text-muted-foreground text-sm mb-2">Linked Funding Sources</p>
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-300">General Fund</span>
-                    <span className="text-white">60%</span>
+                    <span className="text-muted-foreground">General Fund</span>
+                    <span className="text-foreground">60%</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-300">Program-Specific Fund</span>
-                    <span className="text-white">40%</span>
+                    <span className="text-muted-foreground">Program-Specific Fund</span>
+                    <span className="text-foreground">40%</span>
                   </div>
                 </div>
               </div>
@@ -599,7 +599,7 @@ const StaffDashboard: React.FC = () => {
                     <CheckCircle className="w-4 h-4 mr-2" />
                     Approve
                   </Button>
-                  <Button variant="outline" className="flex-1 border-rose-500/50 text-rose-400 hover:bg-rose-500/20">
+                  <Button variant="outline" className="flex-1 border-rose-500/50 text-rose-500 hover:bg-rose-500/20">
                     <XCircle className="w-4 h-4 mr-2" />
                     Reject
                   </Button>
