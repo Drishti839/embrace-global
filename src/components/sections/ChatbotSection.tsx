@@ -112,7 +112,7 @@ const ChatbotSection: React.FC = () => {
                     <Bot className="w-6 h-6 text-primary-foreground" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground">AidConnect Assistant</h3>
+                    <h3 className="font-semibold text-foreground">Hope Hands Assistant</h3>
                     <p className="text-sm text-green-500">● Online</p>
                   </div>
                 </div>
