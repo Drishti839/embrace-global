@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import Navbar from '@/components/layout/Navbar';
+import ChatbotWidget from '@/components/chatbot/ChatbotWidget';
 import { Heart, Download, Users, Award, GraduationCap, Stethoscope, Droplets, AlertTriangle, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { jsPDF } from 'jspdf';
@@ -73,7 +74,7 @@ const DonorDashboard: React.FC = () => {
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(24);
     doc.setFont('helvetica', 'bold');
-    doc.text('AidConnect Global', 105, 20, { align: 'center' });
+    doc.text('Hope Hands Global', 105, 20, { align: 'center' });
     doc.setFontSize(12);
     doc.text('Donation Certificate', 105, 32, { align: 'center' });
     
@@ -122,7 +123,7 @@ const DonorDashboard: React.FC = () => {
     // Footer
     doc.setFontSize(10);
     doc.setTextColor(128, 128, 128);
-    doc.text('This certificate is digitally generated and verified by AidConnect Global.', 105, 260, { align: 'center' });
+    doc.text('This certificate is digitally generated and verified by Hope Hands Global.', 105, 260, { align: 'center' });
     doc.text(`Verification Reference: ${donation.id}-${Date.now()}`, 105, 268, { align: 'center' });
     
     // Save PDF
@@ -240,6 +241,7 @@ const DonorDashboard: React.FC = () => {
           </div>
         </div>
       </main>
+      <ChatbotWidget />
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import Navbar from '@/components/layout/Navbar';
+import ChatbotWidget from '@/components/chatbot/ChatbotWidget';
 import { 
   Briefcase, TrendingUp, Users, FileText, Mail, CheckCircle, Clock, 
   Download, Eye, XCircle, ChevronRight, Shield, PieChart, Wallet,
@@ -118,7 +119,7 @@ const StaffDashboard: React.FC = () => {
     : recentTransactions;
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-slate-900">
       <Navbar />
       <main className="pt-24 pb-12 px-4 md:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -608,6 +609,7 @@ const StaffDashboard: React.FC = () => {
           )}
         </DialogContent>
       </Dialog>
+      <ChatbotWidget />
     </div>
   );
 };

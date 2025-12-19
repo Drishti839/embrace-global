@@ -163,7 +163,7 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">Email Us</h3>
-                  <p className="text-muted-foreground">info@aidconnect.org</p>
+                  <p className="text-muted-foreground">info@hopehands.org</p>
                   <p className="text-sm text-muted-foreground">We respond within 24 hours</p>
                 </div>
               </div>
@@ -180,7 +180,7 @@ const ContactSection: React.FC = () => {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="AidConnect Global Location"
+                  title="Hope Hands Global Location"
                 />
               </div>
             </div>

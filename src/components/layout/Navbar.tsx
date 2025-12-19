@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import LoginModal from '@/components/modals/LoginModal';
 import { Link, useLocation } from 'react-router-dom';
+import hopeHandsLogo from '@/assets/hopehands-logo.jpg';
 
 const languages: { code: Language; name: string; native: string }[] = [
   { code: 'en', name: 'English', native: 'English' },
@@ -53,12 +54,12 @@ const Navbar: React.FC = () => {
             <Link to="/" className="flex items-center gap-3">
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center shadow-glow"
+                className="w-12 h-12 rounded-xl overflow-hidden shadow-glow"
               >
-                <Heart className="w-6 h-6 text-primary-foreground" />
+                <img src={hopeHandsLogo} alt="Hope Hands Logo" className="w-full h-full object-cover" />
               </motion.div>
               <div>
-                <h1 className="text-xl font-bold font-serif text-foreground">AidConnect</h1>
+                <h1 className="text-xl font-bold font-serif text-foreground">Hope Hands</h1>
                 <p className="text-xs text-muted-foreground">Global</p>
               </div>
             </Link>
