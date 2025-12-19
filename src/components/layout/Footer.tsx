@@ -5,6 +5,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import hopeHandsLogo from '@/assets/hopehands-logo.jpg';
 
 const Footer: React.FC = () => {
   const { t } = useLanguage();
@@ -47,11 +48,11 @@ const Footer: React.FC = () => {
             className="space-y-6"
           >
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center">
-                <Heart className="w-6 h-6 text-primary-foreground" />
+              <div className="w-12 h-12 rounded-xl overflow-hidden">
+                <img src={hopeHandsLogo} alt="Hope Hands Logo" className="w-full h-full object-cover" />
               </div>
               <div>
-                <h3 className="text-xl font-bold font-serif">AidConnect</h3>
+                <h3 className="text-xl font-bold font-serif">Hope Hands</h3>
                 <p className="text-sm opacity-70">Global</p>
               </div>
             </div>
@@ -139,7 +140,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary" />
-                <p className="text-sm opacity-80">info@aidconnect.org</p>
+                <p className="text-sm opacity-80">info@hopehands.org</p>
               </div>
             </div>
 
@@ -165,7 +166,7 @@ const Footer: React.FC = () => {
         <div className="container-wide py-6 px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm opacity-70">
-              © {new Date().getFullYear()} AidConnect Global. {t('footer.rights')}.
+              © {new Date().getFullYear()} Hope Hands Global. {t('footer.rights')}.
             </p>
             <div className="flex gap-6">
               <Link to="/privacy" className="text-sm opacity-70 hover:opacity-100 transition-opacity">
