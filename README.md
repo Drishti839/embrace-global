@@ -15,5 +15,5 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open ([https://embrace-global.lovable.app](https://embrace-global.lovable.app)
+Simply open ([https://embrace-global.lovable.app](https://embrace-global.lovable.app))
 
