@@ -39,42 +39,44 @@ const HeroSection: React.FC = () => {
 
       {/* Content */}
       <div className="container-wide relative z-10 px-4 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
-          <motion.div initial={{
-          opacity: 0,
-          x: -50
-        }} animate={{
-          opacity: 1,
-          x: 0
-        }} transition={{
-          duration: 0.8
-        }} className="text-center lg:text-left">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+          {/* Text Content + Rotating Image Row */}
+          <div className="flex-1 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+            {/* Text Content */}
             <motion.div initial={{
             opacity: 0,
-            y: 20
+            x: -50
           }} animate={{
             opacity: 1,
-            y: 0
+            x: 0
           }} transition={{
-            delay: 0.2
-          }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-medium text-primary">Together We Can Make A Difference</span>
-            </motion.div>
+            duration: 0.8
+          }} className="text-center lg:text-left flex-1">
+              <motion.div initial={{
+              opacity: 0,
+              y: 20
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              delay: 0.2
+            }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <span className="text-sm font-medium text-primary">Together We Can Make A Difference</span>
+              </motion.div>
 
-            <motion.h1 initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.3
-          }} className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-serif text-foreground leading-tight mb-6">
-              {t('hero.title')}{' '}
-              
-            </motion.h1>
+              <motion.h1 initial={{
+              opacity: 0,
+              y: 20
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              delay: 0.3
+            }} className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold font-serif text-foreground leading-tight mb-6">
+                {t('hero.title')}{' '}
+                
+              </motion.h1>
 
             <motion.p initial={{
             opacity: 0,
@@ -111,58 +113,7 @@ const HeroSection: React.FC = () => {
               </Link>
             </motion.div>
 
-            {/* Trust Indicators */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.6
-          }} className="mt-12 flex items-center gap-8 justify-center lg:justify-start">
-              <div className="text-center">
-                <p className="text-3xl font-bold text-primary">50K+</p>
-                <p className="text-sm text-muted-foreground">Lives Impacted</p>
-              </div>
-              <div className="w-px h-12 bg-border" />
-              <div className="text-center">
-                <p className="text-3xl font-bold text-primary">200+</p>
-                <p className="text-sm text-muted-foreground">Villages Reached</p>
-              </div>
-              <div className="w-px h-12 bg-border" />
-              <div className="text-center">
-                <p className="text-3xl font-bold text-primary">98%</p>
-                <p className="text-sm text-muted-foreground">Fund Utilization</p>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Image */}
-          <motion.div initial={{
-          opacity: 0,
-          x: 50,
-          scale: 0.9
-        }} animate={{
-          opacity: 1,
-          x: 0,
-          scale: 1
-        }} transition={{
-          duration: 0.8,
-          delay: 0.2
-        }} className="relative">
-            <div className="relative z-10 flex justify-center">
-              <div className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] rounded-full overflow-hidden shadow-elevated">
-                <img 
-                  src={heroImage} 
-                  alt="Diverse hands united in a circle, symbolizing community and hope" 
-                  className="w-full h-full object-cover transition-transform duration-100 ease-out"
-                  style={{ transform: `rotate(${rotation}deg)` }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-full" />
-              </div>
-
-              {/* Floating Card - Circular */}
+              {/* Trust Indicators */}
               <motion.div initial={{
               opacity: 0,
               y: 20
@@ -170,32 +121,84 @@ const HeroSection: React.FC = () => {
               opacity: 1,
               y: 0
             }} transition={{
-              delay: 0.8
-            }} className="absolute -bottom-2 -left-2 md:bottom-0 md:left-4 w-24 h-24 md:w-28 md:h-28 rounded-full glass-card shadow-elevated flex flex-col items-center justify-center">
-                <Heart className="w-5 h-5 md:w-6 md:h-6 text-primary mb-1" />
-                <p className="font-semibold text-foreground text-sm md:text-base">₹2.5 Cr+</p>
-                <p className="text-xs text-muted-foreground">Funds Raised</p>
+              delay: 0.6
+            }} className="mt-8 flex items-center gap-6 justify-center lg:justify-start flex-wrap">
+                <div className="text-center">
+                  <p className="text-2xl lg:text-3xl font-bold text-primary">50K+</p>
+                  <p className="text-xs lg:text-sm text-muted-foreground">Lives Impacted</p>
+                </div>
+                <div className="w-px h-10 bg-border" />
+                <div className="text-center">
+                  <p className="text-2xl lg:text-3xl font-bold text-primary">200+</p>
+                  <p className="text-xs lg:text-sm text-muted-foreground">Villages Reached</p>
+                </div>
+                <div className="w-px h-10 bg-border" />
+                <div className="text-center">
+                  <p className="text-2xl lg:text-3xl font-bold text-primary">98%</p>
+                  <p className="text-xs lg:text-sm text-muted-foreground">Fund Utilization</p>
+                </div>
               </motion.div>
+            </motion.div>
 
-              {/* Floating Badge - Circular */}
-              <motion.div initial={{
-              opacity: 0,
-              y: -20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              delay: 0.9
-            }} className="absolute -top-2 -right-2 md:top-0 md:right-4 w-24 h-24 md:w-28 md:h-28 rounded-full glass-card shadow-elevated flex flex-col items-center justify-center">
-                <span className="text-xl md:text-2xl">🏆</span>
-                <span className="font-semibold text-xs md:text-sm text-foreground text-center">Certified NGO</span>
-              </motion.div>
-            </div>
+            {/* Rotating Image - Side by Side */}
+            <motion.div initial={{
+            opacity: 0,
+            x: 50,
+            scale: 0.9
+          }} animate={{
+            opacity: 1,
+            x: 0,
+            scale: 1
+          }} transition={{
+            duration: 0.8,
+            delay: 0.2
+          }} className="relative flex-shrink-0">
+              <div className="relative z-10 flex justify-center">
+                <div className="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-elevated">
+                  <img 
+                    src={heroImage} 
+                    alt="Diverse hands united in a circle, symbolizing community and hope" 
+                    className="w-full h-full object-cover transition-transform duration-100 ease-out"
+                    style={{ transform: `rotate(${rotation}deg)` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-full" />
+                </div>
 
-            {/* Background Decorations - Circular */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] md:w-[420px] md:h-[420px] lg:w-[500px] lg:h-[500px] rounded-full border-2 border-primary/20 -z-10" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] h-[360px] md:w-[440px] md:h-[440px] lg:w-[520px] lg:h-[520px] rounded-full bg-primary/5 -z-20" />
-          </motion.div>
+                {/* Floating Card - Circular */}
+                <motion.div initial={{
+                opacity: 0,
+                y: 20
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                delay: 0.8
+              }} className="absolute -bottom-2 -left-2 md:bottom-0 md:left-0 w-20 h-20 md:w-24 md:h-24 rounded-full glass-card shadow-elevated flex flex-col items-center justify-center">
+                  <Heart className="w-4 h-4 md:w-5 md:h-5 text-primary mb-1" />
+                  <p className="font-semibold text-foreground text-xs md:text-sm">₹2.5 Cr+</p>
+                  <p className="text-[10px] md:text-xs text-muted-foreground">Funds Raised</p>
+                </motion.div>
+
+                {/* Floating Badge - Circular */}
+                <motion.div initial={{
+                opacity: 0,
+                y: -20
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                delay: 0.9
+              }} className="absolute -top-2 -right-2 md:top-0 md:right-0 w-20 h-20 md:w-24 md:h-24 rounded-full glass-card shadow-elevated flex flex-col items-center justify-center">
+                  <span className="text-lg md:text-xl">🏆</span>
+                  <span className="font-semibold text-[10px] md:text-xs text-foreground text-center">Certified NGO</span>
+                </motion.div>
+              </div>
+
+              {/* Background Decorations - Circular */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[320px] md:h-[320px] lg:w-[360px] lg:h-[360px] rounded-full border-2 border-primary/20 -z-10" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[340px] md:h-[340px] lg:w-[380px] lg:h-[380px] rounded-full bg-primary/5 -z-20" />
+            </motion.div>
+          </div>
         </div>
       </div>
 
