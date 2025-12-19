@@ -2,8 +2,7 @@
 
 ## Project info
 
-**URL**:[ https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID](https://embrace-global.lovable.app)
-
+**URL**:[_PROJECT_ID]([](https://embrace-global.lovable.app))
 ## What technologies are used for this project?
 
 This project is built with:
@@ -16,5 +15,5 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open (https://embrace-global.lovable.app)
+Simply open ([https://embrace-global.lovable.app](https://embrace-global.lovable.app))
 
