@@ -61,7 +61,7 @@ const LanguageModal: React.FC = () => {
                 <Globe className="w-10 h-10 text-primary-foreground" />
               </motion.div>
               <h2 className="text-3xl font-bold font-serif text-foreground mb-2">
-                Welcome to AidConnect
+                Welcome to HopeHand's
               </h2>
               <p className="text-muted-foreground">
                 Please select your preferred language
