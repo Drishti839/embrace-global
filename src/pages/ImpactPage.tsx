@@ -26,7 +26,7 @@ const ImpactPage: React.FC = () => {
     {
       name: 'Priya Sharma',
       location: 'Maharashtra',
-      story: 'Thanks to AidConnect\'s education program, I was able to complete my engineering degree. Today, I work as a software developer and support my entire family.',
+      story: 'Thanks to HopeHand\'s education program, I was able to complete my engineering degree. Today, I work as a software developer and support my entire family.',
       image: educationImage,
       program: 'Education',
     },
